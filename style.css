@@ -1,9 +1,13 @@
 /*
-Theme Name: Universal Base Theme
-Theme URI: https://example.com
-Author: Bil
-Author URI: https://example.com
+Theme Name: Alat-Test Theme
+Theme URI: https://alat-test.com
+Author: BillyCF13
+Author URI: https://github.com/billycf13
 Description: A highly reusable, boilerplate base theme designed as a starting point for multiple custom website designs.
 Version: 1.0.0
-Text Domain: universal-base
+Text Domain: alat-test
 */
+
+.single-page-wrapper {
+    padding: 0;
+}

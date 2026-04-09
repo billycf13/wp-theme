@@ -70,3 +70,19 @@ function wp_starter_scripts() {
     wp_enqueue_style( 'wp-starter-main-css', get_template_directory_uri() . '/assets/css/main.css', array(), '1.0.0' );
 }
 add_action( 'wp_enqueue_scripts', 'wp_starter_scripts' );
+
+/**
+ * Move WooCommerce Taxonomy / Archive Description below the products
+ */
+function wp_starter_move_archive_description() {
+    remove_action( 'woocommerce_archive_description', 'woocommerce_taxonomy_archive_description', 10 );
+    remove_action( 'woocommerce_archive_description', 'woocommerce_product_archive_description', 10 );
+    
+    // Pindahkan deskripsi agar tampil di bawah grid (product loop)
+    add_action( 'woocommerce_after_main_content', 'woocommerce_taxonomy_archive_description', 5 );
+    add_action( 'woocommerce_after_main_content', 'woocommerce_product_archive_description', 5 );
+    
+    // Nonaktifkan breadcrumb default agar tidak dobel karena sudah kita panggil manual
+    remove_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb', 20, 0 );
+}
+add_action( 'wp', 'wp_starter_move_archive_description' );

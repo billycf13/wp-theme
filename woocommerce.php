@@ -113,10 +113,22 @@ get_header(); ?>
     .woocommerce ul.products,
     .woocommerce-page ul.products {
         display: grid !important;
-        grid-template-columns: repeat(3, 1fr) !important;
         gap: 30px !important;
         margin: 0 !important;
         padding: 0 !important;
+    }
+    
+    /* Adaptasi Otomatis dengan Pengaturan Kolom Bawaan WordPress/WooCommerce */
+    .woocommerce ul.products.columns-1 { grid-template-columns: repeat(1, 1fr) !important; }
+    .woocommerce ul.products.columns-2 { grid-template-columns: repeat(2, 1fr) !important; }
+    .woocommerce ul.products.columns-3 { grid-template-columns: repeat(3, 1fr) !important; }
+    .woocommerce ul.products.columns-4 { grid-template-columns: repeat(4, 1fr) !important; }
+    .woocommerce ul.products.columns-5 { grid-template-columns: repeat(5, 1fr) !important; }
+    .woocommerce ul.products.columns-6 { grid-template-columns: repeat(6, 1fr) !important; }
+    
+    /* Fallback standar 3 kolom jika tidak ada pengaturan sama sekali */
+    .woocommerce ul.products:not([class*="columns-"]) { 
+        grid-template-columns: repeat(3, 1fr) !important; 
     }
 
     .woocommerce ul.products::before,
@@ -201,7 +213,7 @@ get_header(); ?>
     }
 
     @media(max-width: 1024px) {
-
+        .woocommerce ul.products[class*="columns-"],
         .woocommerce ul.products,
         .woocommerce-page ul.products {
             grid-template-columns: repeat(2, 1fr) !important;
@@ -209,7 +221,7 @@ get_header(); ?>
     }
 
     @media(max-width: 768px) {
-
+        .woocommerce ul.products[class*="columns-"],
         .woocommerce ul.products,
         .woocommerce-page ul.products {
             grid-template-columns: 1fr !important;

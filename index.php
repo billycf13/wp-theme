@@ -44,12 +44,14 @@ get_header(); ?>
 
     .blog-layout {
         display: flex;
-        gap: 30px;
+        justify-content: space-between;
+        align-items: flex-start;
     }
 
     .blog-main {
-        flex: 0 0 calc(78% - 30px);
-        max-width: calc(78% - 30px);
+        flex: 1;
+        max-width: calc(100% - 300px);
+        /* Menyisakan 320px margin aman */
     }
 
     .blog-posts-grid {
@@ -60,8 +62,8 @@ get_header(); ?>
     }
 
     .blog-sidebar {
-        flex: 0 0 28%;
-        max-width: 28%;
+        flex: 0 0 280px;
+        max-width: 280px;
     }
 
     .blog-post-card {

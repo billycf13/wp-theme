@@ -90,20 +90,23 @@ get_header(); ?>
 
     /* Breadcrumbs */
     .woocommerce-breadcrumb {
-        font-size: 14px;
-        color: #aaa;
-        margin-bottom: 10px !important;
-        padding: 12px 20px;
+        color: #333 !important;
+        margin-bottom: 15px !important;
+        padding: 3px !important;
         background: #fdfdfd;
         border: 1px solid #e5e7eb;
         border-radius: 4px;
     }
 
     .woocommerce-breadcrumb a {
-        color: #d91640;
+        font-size: 16px;
+        color: #d91640 !important;
         text-decoration: none;
         font-weight: 500;
-        margin: 0 5px;
+    }
+
+    .woocommerce-breadcrumb a:first-child {
+        margin-left: 10px;
     }
 
     .woocommerce-breadcrumb a:hover {
@@ -111,6 +114,14 @@ get_header(); ?>
     }
 
     .page-title {
+        display: none;
+    }
+
+    .woocommerce-result-count {
+        display: none;
+    }
+
+    .woocommerce-ordering {
         display: none;
     }
 

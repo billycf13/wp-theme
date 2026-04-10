@@ -10,7 +10,7 @@
     --color-accent: #10b981;
 
     /* Background & Text Variables */
-    --bg-color: #dfdfdf;
+    --bg-color: #efefef;
     --text-color: #0f172a;
     --text-muted: #64748b;
     --border-color: #e2e8f0;
@@ -33,7 +33,7 @@ body {
 }
 
 .container {
-    max-width: 1140px;
+    max-width: 1190px;
     margin: 0 auto;
     padding: 0 40px;
     width: 100%;
@@ -41,7 +41,7 @@ body {
 }
 
 .container-produk {
-    max-width: 1140px;
+    max-width: 1190px;
     margin: 0 auto;
     padding: 0;
     width: 100%;

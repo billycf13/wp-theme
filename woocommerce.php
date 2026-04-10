@@ -16,6 +16,16 @@ get_header(); ?>
         margin: 15px 0 30px;
     }
 
+    /* Di halaman Katalog/Arsip, Sidebar ditarik ke KIRI */
+    .is-archive-product {
+        flex-direction: row-reverse;
+    }
+
+    /* Di Halaman Produk Tunggal, Sidebar jatuh di KANAN (default flow HTML kita) */
+    .is-single-product {
+        flex-direction: row;
+    }
+
     .woo-sidebar {
         flex: 0 0 270px;
     }
@@ -205,12 +215,9 @@ get_header(); ?>
         line-height: 1.4;
     }
 
-    .woocommerce ul.products li.product .price {
-        color: #d91640;
-        font-weight: 700;
-        font-size: 16px;
-        margin-bottom: 15px;
-        display: block;
+    p.price {
+        color: #000 !important;
+        margin: 5px 0 !important;
     }
 
     .woocommerce ul.products li.product .button {
@@ -300,46 +307,161 @@ get_header(); ?>
             width: 100%;
         }
     }
+
+    /* Single Product */
+
+    /* 1. Menyulap kontainer Single Product menjadi Flexbox agar gampang diatur celahnya */
+    .woocommerce div.product {
+        display: flex !important;
+        flex-wrap: wrap;
+        /* Agar aman jika dibuka di HP (turun ke bawah) */
+        gap: 20px !important;
+        /* <<-- KELOLA GAP / JARAK DI SINI */
+        align-items: flex-start;
+    }
+
+    /* 2. Mematikan sistem peninggalan WooCommerce asli yang bikin repot */
+    .woocommerce div.product div.images,
+    .woocommerce div.product div.summary {
+        float: none !important;
+        width: auto !important;
+        margin: 0 !important;
+        /* Membersihkan margin asli/tersembunyi */
+    }
+
+    /* 3. Atur Ukuran Kolom Galeri Gambar (Product Gallery) dikecilkan */
+    .woocommerce div.product div.images {
+        flex: 0 0 40% !important;
+        /* <<-- UBAH UKURAN GAMBAR DI SINI (Misalnya 35% atau 40%) */
+    }
+
+    /* 4. Atur Ukuran Kotak Teks (Summary) agar menghabiskan sisa ruangnya */
+    .woocommerce div.product div.summary {
+        flex: 1 !important;
+        /* Akan otomatis mengambil sisa 60% - dikurangi gap */
+    }
+
+    /* Khusus untuk di HP (Mobile View) agar gambarnya full dan teksnya turun ke bawah */
+    @media (max-width: 768px) {
+        .woocommerce div.product {
+            flex-direction: column;
+        }
+
+        .woocommerce div.product div.images {
+            flex: 0 0 100% !important;
+        }
+    }
+
+    .woo-main .type-product .woocommerce-product-gallery .flex-viewport {
+        /* margin: 0; */
+        background-color: #fff;
+        border-radius: 5px;
+    }
+
+    ol.flex-control-nav.flex-control-thumbs {
+        margin-top: 15px !important;
+    }
+
+    ol.flex-control-nav.flex-control-thumbs li img {
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+    }
+
+    .woo-main .type-product .summary {
+        margin: 0;
+        background-color: #fff;
+        padding: 15px;
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
+
+    /* Desain Meta (SKU, Category, Brand) ala Tabel Tanpa Border */
+    .product_meta {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        margin-top: 5px;
+    }
+
+    .product_meta>span {
+        display: block;
+        padding: 8px 12px;
+        font-size: 14px;
+        color: #64748b;
+        /* Warna teks label (SKU:, Category:) */
+    }
+
+    /* Efek Zebra (belang-belang) mirip tabel */
+    .product_meta>span:nth-child(even) {
+        background-color: #f8fafc;
+        border-radius: 4px;
+    }
+
+    /* Menonjolkan warna dinamis valuenya */
+    .product_meta>span a,
+    .product_meta>span .sku {
+        font-weight: 700;
+        color: #0f172a;
+        margin-left: 6px;
+        text-decoration: none;
+        transition: color 0.2s ease;
+    }
+
+    .product_meta>span a:hover {
+        color: #d91640;
+        /* Hover merah ala tema kita */
+    }
+
+    .woocommerce-tabs {
+        background-color: #fff;
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
+
+    .woocommerce-Tabs-panel {
+        padding: 0 25px !important;
+    }
+
+    .woocommerce-Tabs-panel h2:first-child {
+        display: none !important;
+    }
 </style>
 
 <div class="container-produk">
-    <div class="woo-wrapper">
+    <div class="woo-wrapper <?php echo is_singular('product') ? 'is-single-product' : 'is-archive-product'; ?>">
 
-        <?php
-        // Only show Sidebar if it's an archive page (not a single product). 
-        // Single Product will span 100% width automatically.
-        if (!is_singular('product')): ?>
-            <aside class="woo-sidebar">
-                <?php if (is_active_sidebar('sidebar-shop')): ?>
-                    <?php dynamic_sidebar('sidebar-shop'); ?>
-                <?php else: ?>
-                    <!-- Fallback if user hasn't added widgets yet -->
-                    <div class="widget widget-shop">
-                        <h3 class="widget-title">Kategori Alat Test</h3>
-                        <ul>
-                            <li><a href="#">Alat Kelistrikan</a></li>
-                            <li><a href="#">Alat Ukur Cuaca</a></li>
-                            <li><a href="#">Alat Ukur Kadar Air</a></li>
-                            <li><a href="#">Thermometer</a></li>
-                            <li><a href="#">Hardness Tester</a></li>
-                            <li style="color:#d91640; font-size:12px; margin-top:15px; font-style:italic;">*Atur Widget Anda
-                                dari Dashboard > Tampilan > Widget > Shop Sidebar</li>
-                        </ul>
-                    </div>
-                <?php endif; ?>
-            </aside>
-        <?php endif; ?>
-
+        <!-- Kolom Utama (Konten & Breadcrumbs) -->
         <div class="woo-main">
-            <!-- Menampilkan Penunjuk Arah (Breadcrumb) secara manual -->
             <?php
             if (function_exists('woocommerce_breadcrumb')) {
                 woocommerce_breadcrumb();
             }
             ?>
-            <!-- This magical function outputs EVERYTHING seamlessly -->
             <?php woocommerce_content(); ?>
         </div>
+
+        <!-- Kolom Sidebar -->
+        <aside class="woo-sidebar">
+            <?php
+            if (is_singular('product')) {
+                // Tampilan khusus Single Product
+                if (is_active_sidebar('sidebar-single-product')) {
+                    dynamic_sidebar('sidebar-single-product');
+                } else {
+                    echo '<div class="widget widget-shop"><h3 class="widget-title">Info Produk</h3><ul><li style="color:#666; font-size:13px; font-style:italic;">Anda belum menambahkan Widget di "Single Product Sidebar". Silakan atur di Dashboard > Tampilan > Widget.</li></ul></div>';
+                }
+            } else {
+                // Tampilan Archive / Katalog
+                if (is_active_sidebar('sidebar-shop')) {
+                    dynamic_sidebar('sidebar-shop');
+                } else {
+                    echo '<div class="widget widget-shop"><h3 class="widget-title">Kategori Alat Test</h3><ul><li><a href="#">Contoh Kategori</a></li><li style="color:#d91640; font-size:12px; margin-top:15px; font-style:italic;">*Atur Widget Anda dari Dashboard > Tampilan > Widget > Shop Sidebar</li></ul></div>';
+                }
+            }
+            ?>
+        </aside>
+
     </div>
 </div>
 

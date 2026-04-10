@@ -103,16 +103,18 @@ get_header(); ?>
         color: #333 !important;
         margin-bottom: 15px !important;
         padding: 3px !important;
-        background: #fdfdfd;
-        border: 1px solid #e5e7eb;
+        /* background: #fdfdfd; */
+        /* border: 1px solid #e5e7eb; */
         border-radius: 4px;
+        font-size: 16px !important;
+        font-weight: 700;
     }
 
     .woocommerce-breadcrumb a {
-        font-size: 16px;
+        font-size: 16px !important;
         color: #d91640 !important;
         text-decoration: none;
-        font-weight: 500;
+        font-weight: 450 !important;
     }
 
     .woocommerce-breadcrumb a:first-child {

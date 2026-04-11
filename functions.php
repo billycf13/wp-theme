@@ -140,9 +140,11 @@ add_filter('woocommerce_get_breadcrumb', 'custom_modify_shop_breadcrumb', 10, 2)
 function custom_modify_shop_breadcrumb($crumbs, $breadcrumb)
 {
 
+    // Deteksi apakah sedang di halaman Brand
+    $is_brand_page = is_tax('pwb-brand') || is_tax('product_brand') || is_tax('yith_product_brand');
+
     // Cek apakah ini HANYA halaman utama toko (/produk)
-    // dan BUKAN halaman kategori, tag, atau pencarian.
-    if (is_shop() && !is_product_category() && !is_product_tag() && !is_search()) {
+    if (is_shop() && !is_product_category() && !is_product_tag() && !is_search() && !$is_brand_page) {
 
         // Kita "kosongkan" breadcrumb bawaannya
         $crumbs = array();
@@ -150,8 +152,29 @@ function custom_modify_shop_breadcrumb($crumbs, $breadcrumb)
         // Item ke-1: Teks 'Product' yang bisa di-klik dan mengarah ke /produk
         $crumbs[] = array('', home_url('/produk'));
 
-        // Item ke-2: Teks 'All Product' (tanpa URL karena merupakan halaman aktif saat ini)
         $crumbs[] = array('Semua Produk', '');
+    } elseif (is_product_category()) {
+        // Ubah breadcrumb Home/Produk ke Kategori
+        if (isset($crumbs[0])) {
+            $crumbs[0][0] = 'Kategori';
+            $crumbs[0][1] = home_url('/kategori');
+        }
+        // Pastikan tidak ada "Produk" ganda di tengah-tengah
+        if (isset($crumbs[1]) && stripos($crumbs[1][0], 'produk') !== false) {
+            unset($crumbs[1]);
+            $crumbs = array_values($crumbs);
+        }
+    } elseif ($is_brand_page) {
+        // Ubah breadcrumb Home/Produk ke Brand
+        if (isset($crumbs[0])) {
+            $crumbs[0][0] = 'Brand';
+            $crumbs[0][1] = home_url('/brand');
+        }
+        // Pastikan tidak ada "Produk" ganda di tengah-tengah
+        if (isset($crumbs[1]) && stripos($crumbs[1][0], 'produk') !== false) {
+            unset($crumbs[1]);
+            $crumbs = array_values($crumbs);
+        }
     }
 
     // Kembalikan hasilnya ke sistem WooCommerce

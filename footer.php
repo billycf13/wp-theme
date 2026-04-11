@@ -169,18 +169,31 @@
 <footer id="colophon" class="site-footer site-footer-custom">
     <div class="container">
         <div class="footer-top">
+
+            <!-- Kolom 1 (Baru): Tentang Perusahaan -->
             <div class="footer-col col-about">
                 <div class="footer-logo">
                     <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/logo/logo-Alat-test-01-e1635299440277.png'); ?>"
                         alt="Logo Alat-Test">
                 </div>
+                <p style="line-height: 1.6; color: #555; text-align: justify; font-size: 14px; margin-top: 15px;">
+                    Alat-test.com adalah platform katalog alat ukur dan alat uji multi brand dari Ukurdanuji (CV. Java
+                    Multi Mandiri) untuk berbagai kebutuhan industri dan laboratorium. Menyediakan beragam produk
+                    original dengan dukungan konsultasi dan layanan teknis untuk membantu Anda memilih solusi yang
+                    tepat.
+                </p>
+            </div>
+
+            <!-- Kolom 2: Kontak -->
+            <div class="footer-col col-contact">
+                <h3 class="footer-heading">Kontak Kami</h3>
                 <div class="footer-contact-item">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <circle cx="12" cy="12" r="10"></circle>
                         <polyline points="12 6 12 12 16 14"></polyline>
                     </svg>
-                    <div>Jam Operasional. Senin - Sabtu: 08.00 -<br>16.00</div>
+                    <div>Jam Operasional.<br> Senin - Sabtu: 08.00 - 16.00</div>
                 </div>
                 <div class="footer-contact-item">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -188,7 +201,7 @@
                         <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
                         <circle cx="12" cy="10" r="3"></circle>
                     </svg>
-                    <div>Jalan Raya Karanggintung, KM. 2 No. 7, Kec.<br>Sumbang, Kab. Banyumas, Jawa Tengah<br>53183
+                    <div>Jalan Raya Karanggintung, KM. 2 No. 7, Kec. Sumbang, Kab. Banyumas, Jawa Tengah<br>53183
                     </div>
                 </div>
                 <div class="footer-contact-item">

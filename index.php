@@ -283,23 +283,68 @@ get_header(); ?>
             grid-template-columns: 1fr;
         }
     }
+
+    /* Breadcrumbs */
+    .blog-breadcrumb {
+        color: #333;
+        margin-bottom: 20px;
+        padding: 3px;
+        border-radius: 4px;
+        font-size: 16px;
+        font-weight: 700;
+        text-align: left;
+    }
+
+    .blog-breadcrumb a {
+        font-size: 16px;
+        color: #d91640;
+        text-decoration: none;
+        font-weight: 450;
+    }
+
+    .blog-breadcrumb a:first-child {
+        margin-left: 10px;
+    }
+
+    .blog-breadcrumb a:hover {
+        text-decoration: underline;
+    }
 </style>
 
 <div class="blog-page-wrapper">
     <div class="container-produk">
 
-        <div class="blog-header">
-            <?php if (is_category()): ?>
-                <h1>Kategori: <?php single_cat_title(); ?></h1>
-            <?php elseif (is_tag()): ?>
-                <h1>Tag: <?php single_tag_title(); ?></h1>
-            <?php elseif (is_search()): ?>
-                <h1>Pencarian: <?php echo get_search_query(); ?></h1>
-            <?php endif; ?>
-        </div>
+
+        <!-- <div class="blog-header"> -->
+        <!-- <?php if (is_category()): ?> -->
+            <!-- <h1>Kategori: <?php single_cat_title(); ?></h1> -->
+            <!-- <?php elseif (is_tag()): ?> -->
+            <!-- <h1>Tag: <?php single_tag_title(); ?></h1> -->
+            <!-- <?php elseif (is_search()): ?> -->
+            <!-- <h1>Pencarian: <?php echo get_search_query(); ?></h1> -->
+            <!-- <?php endif; ?> -->
+        <!-- </div> -->
 
         <div class="blog-layout">
             <div class="blog-main">
+                <nav class="blog-breadcrumb">
+                    <!-- <a href="<?php echo esc_url(home_url('/blog')); ?>">Beranda</a> &nbsp;&#47;&nbsp; -->
+                    <?php if (is_category()): ?>
+                        <a href="<?php echo esc_url(get_permalink(get_option('page_for_posts'))); ?>">Kategori</a>
+                        &nbsp;&#47;&nbsp;
+                        <?php single_cat_title(); ?>
+                    <?php elseif (is_tag()): ?>
+                        <a href="<?php echo esc_url(get_permalink(get_option('page_for_posts'))); ?>">Tag</a>
+                        &nbsp;&#47;&nbsp;
+                        <?php single_tag_title(); ?>
+                    <?php elseif (is_search()): ?>
+                        <a href="<?php echo esc_url(get_permalink(get_option('page_for_posts'))); ?>">Pencarian</a>
+                        &nbsp;&#47;&nbsp;
+                        <?php echo get_search_query(); ?>
+                    <?php else: ?>
+                        Semua Artikel
+                    <?php endif; ?>
+                </nav>
                 <?php if (have_posts()): ?>
                     <div class="blog-posts-grid">
                         <?php while (have_posts()):

@@ -183,7 +183,7 @@ get_header();
 </style>
 
 <div class="contact-page">
-    <div class="container">
+    <div class="container-produk">
         <div class="contact-header">
             <h1>Hubungi Kami</h1>
             <p>Punya pertanyaan seputar produk atau pesanan Anda? Silakan isi form di bawah ini atau hubungi kami

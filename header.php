@@ -40,9 +40,15 @@
         .top-bar-left {
             display: flex;
             align-items: center;
+            gap: 20px;
             color: #374151;
             font-weight: 500;
-            gap: 6px;
+        }
+
+        .top-bar-contact-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
         }
 
         .top-bar-right {
@@ -173,74 +179,20 @@
             border-radius: 4px;
         }
 
-        /* Sticky Burger Menu Styles */
-        .header-sticky-menu {
-            display: none;
-            /* hidden by default */
-            position: relative;
-        }
-
-        .is-stuck .header-sticky-menu {
-            display: flex;
-            align-items: center;
-        }
-
-        .burger-btn {
-            background: transparent;
+        .btn-search {
+            background-color: #d91640 !important;
+            color: #fff !important;
             border: none;
+            padding: 10px 20px !important;
+            margin-right: 3px !important;
+            font-weight: 700 !important;
+            border-radius: 0 5px 5px 0 !important;
             cursor: pointer;
-            color: #374151;
-            display: flex;
-            align-items: center;
-            padding: 8px;
-            border-radius: 4px;
             transition: background 0.2s;
         }
 
-        .burger-btn:hover {
-            background: #f3f4f5;
-        }
-
-        .sticky-dropdown {
-            position: absolute;
-            top: 100%;
-            right: 0;
-            margin-top: 5px;
-            background: #fff;
-            min-width: 150px;
-            border-radius: 6px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            border: 1px solid #eee;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(10px);
-            transition: all 0.2s ease;
-            z-index: 100;
-        }
-
-        .header-sticky-menu:hover .sticky-dropdown {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-
-        .sticky-dropdown a {
-            display: block;
-            padding: 10px 15px;
-            color: #374151;
-            text-decoration: none;
-            font-size: 14px;
-            border-bottom: 1px solid #f3f4f5;
-            transition: background 0.2s, color 0.2s;
-        }
-
-        .sticky-dropdown a:last-child {
-            border-bottom: none;
-        }
-
-        .sticky-dropdown a:hover {
-            background: #f9fafb;
-            color: #d91640;
+        .btn-search:hover {
+            background-color: #d91640;
         }
 
         @media (max-width: 900px) {
@@ -274,27 +226,38 @@
     <?php wp_body_open(); ?>
 
     <div id="page" class="site">
-        <!-- Top Bar -->
-        <div class="header-top-bar">
-            <div class="header-top-container">
-                <div class="top-bar-left">
-                    <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" fill="none"
-                        stroke-linecap="round" stroke-linejoin="round">
-                        <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
-                        <line x1="12" y1="18" x2="12.01" y2="18"></line>
-                    </svg>
-                    <span>08123456778</span>
-                </div>
-                <div class="top-bar-right">
-                    <a href="<?php echo esc_url(home_url('/tentang')); ?>">Tentang</a>
-                    <a href="<?php echo esc_url(home_url('/kontak')); ?>">Kontak</a>
-                    <a href="<?php echo esc_url(home_url('/produk')); ?>">Produk</a>
-                    <a href="<?php echo esc_url(home_url('/blog')); ?>">Blog</a>
-                </div>
-            </div>
-        </div>
 
         <header id="masthead" class="site-header site-header-custom" style="position: sticky; top: 0; z-index: 1000;">
+            <!-- Top Bar -->
+            <div class="header-top-bar">
+                <div class="header-top-container">
+                    <div class="top-bar-left">
+                        <div class="top-bar-contact-item">
+                            <!-- Icon Gagang Telepon Solid -->
+                            <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
+                                <path
+                                    d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
+                            </svg>
+                            <span>08123456778</span>
+                        </div>
+                        <div class="top-bar-contact-item">
+                            <!-- Icon Amplop Surat Solid -->
+                            <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
+                                <path
+                                    d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+                            </svg>
+                            <span>contact@alat-test.com</span>
+                        </div>
+                    </div>
+                    <div class="top-bar-right">
+                        <a href="<?php echo esc_url(home_url('/tentang')); ?>">Tentang</a>
+                        <a href="<?php echo esc_url(home_url('/kontak')); ?>">Kontak</a>
+                        <a href="<?php echo esc_url(home_url('/produk')); ?>">Produk</a>
+                        <a href="<?php echo esc_url(home_url('/brand')); ?>">Brand</a>
+                        <a href="<?php echo esc_url(home_url('/blog')); ?>">Blog</a>
+                    </div>
+                </div>
+            </div>
 
             <!-- Main Bar -->
             <div class="header-main-bar">
@@ -326,35 +289,13 @@
                             <input type="search" class="search-field" placeholder="Cari alat test..."
                                 value="<?php echo get_search_query(); ?>" name="s" />
                             <input type="hidden" name="post_type" value="product" />
+                            <button type="submit" class="btn-search">
+                                Cari
+                            </button>
                         </form>
                     </div>
 
-                    <div class="header-category">
-                        <a href="<?php echo esc_url(home_url('/brand')); ?>"
-                            style="color: inherit; text-decoration: none; display: flex; align-items: center; gap: 5px;">
-                            Merek
-                        </a>
-                    </div>
-
                     <div class="header-actions">
-                        <div class="header-sticky-menu">
-                            <button class="burger-btn" aria-label="Menu">
-                                <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" fill="none"
-                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <line x1="3" y1="12" x2="21" y2="12"></line>
-                                    <line x1="3" y1="6" x2="21" y2="6"></line>
-                                    <line x1="3" y1="18" x2="21" y2="18"></line>
-                                </svg>
-                            </button>
-                            <div class="sticky-dropdown">
-                                <a href="<?php echo esc_url(home_url('/tentang')); ?>">Tentang</a>
-                                <a href="<?php echo esc_url(home_url('/kontak')); ?>">Kontak</a>
-                                <a href="<?php echo esc_url(home_url('/produk')); ?>">Produk</a>
-                                <a href="<?php echo esc_url(home_url('/brand')); ?>">Merek</a>
-                                <a href="<?php echo esc_url(home_url('/blog')); ?>">Blog</a>
-                            </div>
-                        </div>
-
                         <a href="<?php echo esc_url(home_url('/inaproc')); ?>" class="inaproc-link" title="INAPROC">
                             <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/logo/inaproc.webp'); ?>"
                                 alt="INAPROC Logo">
@@ -366,26 +307,3 @@
         </header><!-- #masthead -->
 
         <main id="primary" class="site-main container">
-
-            <script>
-                document.addEventListener("DOMContentLoaded", function () {
-                    const header = document.getElementById("masthead");
-                    const topBar = document.querySelector(".header-top-bar");
-
-                    if (header && topBar) {
-                        const observer = new IntersectionObserver(
-                            ([e]) => {
-                                // if top bar is fully out of screen, sticky kicks in
-                                if (e.isIntersecting) {
-                                    header.classList.remove("is-stuck");
-                                } else {
-                                    header.classList.add("is-stuck");
-                                }
-                            },
-                            { threshold: [0] }
-                        );
-
-                        observer.observe(topBar);
-                    }
-                });
-            </script>

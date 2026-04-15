@@ -269,11 +269,17 @@
                         </a>
                     </div>
 
-                    <div class="header-category">
+                    <div class="header-category wrapper-dropdown-kategori">
                         <a href="<?php echo esc_url(home_url('/kategori')); ?>"
-                            style="color: inherit; text-decoration: none; display: flex; align-items: center; gap: 5px;">
+                            style="color: inherit; text-decoration: none; display: flex; align-items: center; gap: 5px; height: 100%; padding: 10px 0;">
                             Kategori
+                            <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg>
                         </a>
+                        <?php 
+                        if (function_exists('wp_starter_render_mega_menu')) {
+                            echo wp_starter_render_mega_menu();
+                        }
+                        ?>
                     </div>
 
                     <div class="header-search-wrap">

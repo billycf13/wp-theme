@@ -309,6 +309,100 @@ get_header(); ?>
     .blog-breadcrumb a:hover {
         text-decoration: underline;
     }
+
+    .search-rebar {
+        max-width: 600px;
+        margin: 0 auto 50px;
+    }
+
+    .search-rebar .search-form {
+        display: flex;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+        border-radius: 50px;
+        overflow: hidden;
+    }
+
+    .search-rebar input[type="search"] {
+        flex: 1;
+        padding: 16px 25px;
+        border: 1px solid #eaeaea;
+        border-right: none;
+        border-radius: 50px 0 0 50px;
+        font-size: 16px;
+        outline: none;
+        background: #fff;
+    }
+
+    .search-rebar button {
+        background: #d91640;
+        color: #fff;
+        border: none;
+        padding: 16px 35px;
+        font-weight: bold;
+        border-radius: 0 50px 50px 0;
+        cursor: pointer;
+        transition: background 0.3s;
+    }
+
+    .search-rebar button:hover {
+        background: #b01030;
+    }
+
+    .search-list {
+        max-width: 850px;
+        margin: 0 auto;
+    }
+
+    .search-item {
+        background: #fff;
+        border-radius: 8px;
+        padding: 30px;
+        margin-bottom: 25px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+        border-left: 4px solid #eaeaea;
+        transition: all 0.3s;
+    }
+
+    .search-item:hover {
+        border-left-color: #d91640;
+        box-shadow: 0 6px 25px rgba(0, 0, 0, 0.08);
+        transform: translateX(6px);
+    }
+
+    .search-item-type {
+        font-size: 11px;
+        text-transform: uppercase;
+        font-weight: bold;
+        background: #f1f2f6;
+        color: #555;
+        padding: 4px 10px;
+        border-radius: 20px;
+        margin-bottom: 12px;
+        display: inline-block;
+        letter-spacing: 0.5px;
+    }
+
+    .search-item-title {
+        font-size: 22px;
+        margin: 0 0 15px 0;
+    }
+
+    .search-item-title a {
+        color: #222;
+        text-decoration: none;
+        transition: color 0.2s;
+    }
+
+    .search-item-title a:hover {
+        color: #d91640;
+    }
+
+    .search-item-excerpt {
+        color: #666;
+        line-height: 1.6;
+        font-size: 15px;
+        margin-bottom: 0;
+    }
 </style>
 
 <div class="blog-page-wrapper">

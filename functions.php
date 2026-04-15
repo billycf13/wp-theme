@@ -385,6 +385,10 @@ function render_custom_contact_buttons()
             Email
         </a>
 
-    </div>
     <?php
 }
+
+/**
+ * Load internal components
+ */
+require get_template_directory() . '/inc/mega-menu.php';

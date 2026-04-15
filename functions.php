@@ -384,9 +384,24 @@ function render_custom_contact_buttons()
             </svg>
             Email
         </a>
+    </div>
 
     <?php
 }
+
+/**
+ * Mencetak Rating Permanen 5 Bintang di Loop Produk (Katalog/Archive)
+ */
+function render_loop_product_rating()
+{
+    ?>
+    <div class="loop-rating-info" style="color:#f59e0b; font-size:14px; margin-bottom:10px; text-align:center;">
+        &#9733;&#9733;&#9733;&#9733;&#9733;
+        <span style="color:#64748b; font-size:12px; font-weight:500; margin-left:4px;">(5.0)</span>
+    </div>
+    <?php
+}
+add_action('woocommerce_after_shop_loop_item_title', 'render_loop_product_rating', 5);
 
 /**
  * Load internal components

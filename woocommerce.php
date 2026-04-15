@@ -428,6 +428,15 @@ get_header(); ?>
     .woocommerce-Tabs-panel h2:first-child {
         display: none !important;
     }
+
+    /* Memastikan elemen-elemen di bawah produk (seperti Tabs dan Related) mengambil sisa lebar penuh */
+    .woocommerce div.product .woocommerce-tabs,
+    .woocommerce div.product .related.products,
+    .woocommerce div.product .upsells.products {
+        flex: 0 0 100% !important;
+        width: 100% !important;
+        margin-top: 30px !important;
+    }
 </style>
 
 <div class="container-produk">
